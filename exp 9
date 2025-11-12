@@ -1,0 +1,95 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a, b;
+    cout << "Enter two numbers: ";
+    cin >> a >> b;
+
+    try {
+        if (b == 0)
+            throw b;
+        cout << "Result: " << a / b << endl;
+    }
+    catch (int x) {
+        cout << "Error: Division by zero not allowed!" << endl;
+    }
+
+    cout << "Program continues..." << endl;
+    return 0;
+}
+#include <iostream>
+using namespace std;
+
+int main() {
+    try {
+        int choice;
+        cout << "Enter 1 for int, 2 for float, 3 for string: ";
+        cin >> choice;
+
+        if (choice == 1)
+            throw 10;
+        else if (choice == 2)
+            throw 2.5f;
+        else if (choice == 3)
+            throw "Hello Exception";
+        else
+            cout << "No Exception\n";
+    }
+    catch (int x) {
+        cout << "Caught Integer Exception: " << x << endl;
+    }
+    catch (float y) {
+        cout << "Caught Float Exception: " << y << endl;
+    }
+    catch (const char* msg) {
+        cout << "Caught String Exception: " << msg << endl;
+    }
+
+    return 0;
+}
+#include <iostream>
+using namespace std;
+
+int main() {
+    try {
+        cout << "Outer try block\n";
+        try {
+            cout << "Inner try block\n";
+            throw 100;
+        }
+        catch (int x) {
+            cout << "Inner catch: " << x << endl;
+            throw; // rethrow to outer block
+        }
+    }
+    catch (int y) {
+        cout << "Outer catch: " << y << endl;
+    }
+
+    return 0;
+}
+#include <iostream>
+using namespace std;
+
+void divide(int a, int b) {
+    if (b == 0)
+        throw "Division by zero!";
+    cout << "Result: " << a / b << endl;
+}
+
+int main() {
+    int x, y;
+    cout << "Enter two numbers: ";
+    cin >> x >> y;
+
+    try {
+        divide(x, y);
+    }
+    catch (const char* msg) {
+        cout << "Error: " << msg << endl;
+    }
+
+    cout << "End of Program" << endl;
+    return 0;
+}
