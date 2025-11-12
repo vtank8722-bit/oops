@@ -1,0 +1,103 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ofstream fout("data.txt");
+    string text;
+
+    cout << "Enter text to write in file: ";
+    getline(cin, text);
+
+    fout << text;
+    fout.close();
+    cout << "Data written to file successfully.\n";
+
+    ifstream fin("data.txt");
+    cout << "\nReading from file:\n";
+    string line;
+    while (getline(fin, line))
+        cout << line << endl;
+
+    fin.close();
+    return 0;
+}
+#include <iostream>
+using namespace std;
+
+class B;
+
+class A {
+    int numA;
+public:
+    void setData(int a) {
+        numA = a;
+    }
+    friend int add(A, B);
+};
+
+class B {
+    int numB;
+public:
+    void setData(int b) {
+        numB = b;
+    }
+    friend int add(A, B);
+};
+
+int add(A x, B y) {
+    return (x.numA + y.numB);
+}
+
+int main() {
+    A a;
+    B b;
+    a.setData(5);
+    b.setData(10);
+    cout << "Sum = " << add(a, b) << endl;
+    return 0;
+}
+#include <iostream>
+using namespace std;
+
+template <class T>
+T add(T a, T b) {
+    return a + b;
+}
+
+int main() {
+    cout << "Int sum: " << add(10, 20) << endl;
+    cout << "Float sum: " << add(2.5f, 3.5f) << endl;
+    cout << "Double sum: " << add(4.5, 5.5) << endl;
+    return 0;
+}
+#include <iostream>
+using namespace std;
+
+template <class T>
+class Calculator {
+    T num1, num2;
+public:
+    Calculator(T n1, T n2) {
+        num1 = n1;
+        num2 = n2;
+    }
+    void display() {
+        cout << "Addition: " << num1 + num2 << endl;
+        cout << "Subtraction: " << num1 - num2 << endl;
+        cout << "Multiplication: " << num1 * num2 << endl;
+        cout << "Division: " << num1 / num2 << endl;
+    }
+};
+
+int main() {
+    Calculator<int> c1(10, 5);
+    c1.display();
+
+    Calculator<float> c2(10.5, 5.5);
+    c2.display();
+
+    return 0;
+}
+
+
