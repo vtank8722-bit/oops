@@ -1,0 +1,133 @@
+#include <iostream>
+using namespace std;
+
+class Employee {
+    int id;
+    string name;
+    float salary;
+
+public:
+    void input() {
+        cout << "Enter ID, Name, and Salary: ";
+        cin >> id >> name >> salary;
+    }
+
+    void display() {
+        cout << "\nID: " << id << "\tName: " << name << "\tSalary: " << salary;
+    }
+};
+
+int main() {
+    int n;
+    cout << "Enter number of employees: ";
+    cin >> n;
+
+    Employee emp[n];
+    for (int i = 0; i < n; i++) {
+        cout << "\nEnter details for employee " << i + 1 << ":\n";
+        emp[i].input();
+    }
+
+    cout << "\nEmployee Details:\n";
+    for (int i = 0; i < n; i++) {
+        emp[i].display();
+    }
+
+    return 0;
+}
+
+
+#include <iostream>
+using namespace std;
+
+class Student {
+    int roll;
+    string name;
+    float marks[3];
+    float total, avg;
+
+public:
+    void input() {
+        cout << "Enter Roll No and Name: ";
+        cin >> roll >> name;
+        total = 0;
+        cout << "Enter marks in 3 subjects: ";
+        for (int i = 0; i < 3; i++) {
+            cin >> marks[i];
+            total += marks[i];
+        }
+        avg = total / 3;
+    }
+
+    void display() {
+        cout << "\nRoll: " << roll << "\tName: " << name
+             << "\tTotal: " << total << "\tAverage: " << avg;
+    }
+};
+
+int main() {
+    int n;
+    cout << "Enter number of students: ";
+    cin >> n;
+
+    Student s[n];
+    for (int i = 0; i < n; i++) {
+        cout << "\nEnter details for student " << i + 1 << ":\n";
+        s[i].input();
+    }
+
+    cout << "\nStudent Details:\n";
+    for (int i = 0; i < n; i++) {
+        s[i].display();
+    }
+
+    return 0;
+}
+
+
+#include <iostream>
+using namespace std;
+
+class Product {
+    int id;
+    string name;
+    float price, qty, total;
+
+public:
+    void input() {
+        cout << "Enter Product ID, Name, Price, Quantity: ";
+        cin >> id >> name >> price >> qty;
+        total = price * qty;
+    }
+
+    void display() {
+        cout << id << "\t" << name << "\t" << price << "\t" << qty << "\t" << total << endl;
+    }
+
+    float getTotal() {
+        return total;
+    }
+};
+
+int main() {
+    int n;
+    cout << "Enter number of products: ";
+    cin >> n;
+
+    Product p[n];
+    float grandTotal = 0;
+
+    cout << "\nEnter details:\n";
+    for (int i = 0; i < n; i++) {
+        p[i].input();
+        grandTotal += p[i].getTotal();
+    }
+
+    cout << "\nID\tName\tPrice\tQty\tTotal\n";
+    for (int i = 0; i < n; i++) {
+        p[i].display();
+    }
+
+    cout << "\nGrand Total Bill: " << grandTotal << endl;
+    return 0;
+}
