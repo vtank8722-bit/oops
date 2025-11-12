@@ -1,0 +1,125 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    vector<int> v;
+    int n, val;
+
+    cout << "Enter number of elements: ";
+    cin >> n;
+
+    for (int i = 0; i < n; i++) {
+        cout << "Enter value: ";
+        cin >> val;
+        v.push_back(val);
+    }
+
+    cout << "\nVector Elements: ";
+    for (int x : v)
+        cout << x << " ";
+
+    cout << "\nSize: " << v.size() << endl;
+    return 0;
+}
+#include <iostream>
+#include <stack>
+using namespace std;
+
+int main() {
+    stack<int> s;
+    s.push(10);
+    s.push(20);
+    s.push(30);
+
+    cout << "Top element: " << s.top() << endl;
+
+    s.pop();
+    cout << "After pop, top element: " << s.top() << endl;
+
+    cout << "Stack contents: ";
+    while (!s.empty()) {
+        cout << s.top() << " ";
+        s.pop();
+    }
+
+    return 0;
+}
+#include <iostream>
+#include <queue>
+using namespace std;
+
+int main() {
+    queue<string> q;
+
+    q.push("Apple");
+    q.push("Banana");
+    q.push("Cherry");
+
+    cout << "Front: " << q.front() << endl;
+    cout << "Back: " << q.back() << endl;
+
+    q.pop();
+    cout << "\nAfter one pop, front: " << q.front() << endl;
+
+    cout << "\nQueue elements: ";
+    while (!q.empty()) {
+        cout << q.front() << " ";
+        q.pop();
+    }
+
+    return 0;
+}
+
+#include <iostream>
+#include <map>
+using namespace std;
+
+int main() {
+    map<int, string> students;
+
+    students[1] = "Vishal";
+    students[2] = "Amit";
+    students[3] = "Priya";
+
+    cout << "Student Details:\n";
+    for (auto it : students)
+        cout << it.first << " => " << it.second << endl;
+
+    cout << "\nEnter roll to search: ";
+    int roll;
+    cin >> roll;
+
+    if (students.find(roll) != students.end())
+        cout << "Found: " << students[roll] << endl;
+    else
+        cout << "Not Found!" << endl;
+
+    return 0;
+}
+
+#include <iostream>
+#include <set>
+using namespace std;
+
+int main() {
+    set<int> s;
+
+    s.insert(5);
+    s.insert(3);
+    s.insert(8);
+    s.insert(3); // duplicate ignored
+
+    cout << "Set elements: ";
+    for (int x : s)
+        cout << x << " ";
+
+    cout << "\nSize: " << s.size() << endl;
+
+    s.erase(5);
+    cout << "After erasing 5: ";
+    for (int x : s)
+        cout << x << " ";
+
+    return 0;
+}
