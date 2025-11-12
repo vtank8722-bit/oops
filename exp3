@@ -1,0 +1,138 @@
+#include <iostream>
+using namespace std;
+
+class Rectangle {
+    int length, breadth;
+
+public:
+    Rectangle() { // default constructor
+        length = 0;
+        breadth = 0;
+    }
+
+    Rectangle(int l, int b) { // parameterized constructor
+        length = l;
+        breadth = b;
+    }
+
+    int area() {
+        return length * breadth;
+    }
+
+    void display() {
+        cout << "Length: " << length << ", Breadth: " << breadth
+             << ", Area: " << area() << endl;
+    }
+};
+
+int main() {
+    Rectangle r1;          // default constructor
+    Rectangle r2(10, 5);   // parameterized constructor
+
+    cout << "Default Rectangle:\n";
+    r1.display();
+
+    cout << "Parameterized Rectangle:\n";
+    r2.display();
+    return 0;
+}
+
+#include <iostream>
+using namespace std;
+
+class Complex {
+    int real, imag;
+
+public:
+    Complex() {
+        real = 0;
+        imag = 0;
+    }
+
+    Complex(int r) {
+        real = r;
+        imag = 0;
+    }
+
+    Complex(int r, int i) {
+        real = r;
+        imag = i;
+    }
+
+    void display() {
+        cout << real << " + " << imag << "i" << endl;
+    }
+};
+
+int main() {
+    Complex c1, c2(5), c3(3, 7);
+
+    cout << "Default: ";
+    c1.display();
+
+    cout << "Single Parameter: ";
+    c2.display();
+
+    cout << "Two Parameters: ";
+    c3.display();
+
+    return 0;
+}
+
+
+#include <iostream>
+using namespace std;
+
+class Number {
+    int n;
+
+public:
+    Number(int x) {
+        n = x;
+    }
+
+    // copy constructor
+    Number(const Number &obj) {
+        n = obj.n;
+    }
+
+    void display() {
+        cout << "Number: " << n << endl;
+    }
+};
+
+int main() {
+    Number n1(10);
+    Number n2 = n1; // copy constructor called
+
+    cout << "n1: ";
+    n1.display();
+
+    cout << "n2 (copy): ";
+    n2.display();
+
+    return 0;
+}
+
+#include <iostream>
+using namespace std;
+
+class Demo {
+public:
+    Demo() {
+        cout << "Constructor called" << endl;
+    }
+
+    ~Demo() {
+        cout << "Destructor called" << endl;
+    }
+};
+
+int main() {
+    Demo d1;
+    {
+        Demo d2;
+    } // d2 destroyed here
+    cout << "End of main function" << endl;
+    return 0;
+}
