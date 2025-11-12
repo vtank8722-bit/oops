@@ -1,0 +1,101 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ofstream fout;
+    fout.open("data.txt");
+    fout << "Hello! This is a C++ file handling example.\n";
+    fout << "File handling is easy!\n";
+    fout.close();
+
+    ifstream fin;
+    fin.open("data.txt");
+    string line;
+    cout << "File Content:\n";
+    while (getline(fin, line)) {
+        cout << line << endl;
+    }
+    fin.close();
+    return 0;
+}
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+class Student {
+public:
+    int roll;
+    string name;
+
+    void input() {
+        cout << "Enter Roll No and Name: ";
+        cin >> roll >> name;
+    }
+
+    void display() {
+        cout << "Roll: " << roll << ", Name: " << name << endl;
+    }
+};
+
+int main() {
+    Student s1, s2;
+
+    ofstream fout("student.txt");
+    s1.input();
+    fout << s1.roll << " " << s1.name << endl;
+    fout.close();
+
+    ifstream fin("student.txt");
+    fin >> s2.roll >> s2.name;
+    cout << "\nData read from file:\n";
+    s2.display();
+    fin.close();
+
+    return 0;
+}
+
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ofstream fout;
+    fout.open("append.txt", ios::app);  // open in append mode
+    string text;
+    cout << "Enter text to append: ";
+    getline(cin, text);
+    fout << text << endl;
+    fout.close();
+
+    cout << "\nFile updated successfully!\n";
+
+    ifstream fin("append.txt");
+    string line;
+    cout << "\nFile Content:\n";
+    while (getline(fin, line)) {
+        cout << line << endl;
+    }
+    fin.close();
+
+    return 0;
+}
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int main() {
+    ifstream fin("data.txt");
+    string word;
+    int count = 0;
+
+    while (fin >> word) {
+        count++;
+    }
+
+    cout << "Total words in file: " << count << endl;
+    fin.close();
+    return 0;
+}
