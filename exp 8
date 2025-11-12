@@ -1,0 +1,106 @@
+#include <iostream>
+using namespace std;
+
+template <class T>
+void swapValues(T &a, T &b) {
+    T temp = a;
+    a = b;
+    b = temp;
+}
+
+int main() {
+    int x = 10, y = 20;
+    cout << "Before Swap: x = " << x << ", y = " << y << endl;
+    swapValues(x, y);
+    cout << "After Swap: x = " << x << ", y = " << y << endl;
+
+    float a = 2.5, b = 3.8;
+    cout << "\nBefore Swap: a = " << a << ", b = " << b << endl;
+    swapValues(a, b);
+    cout << "After Swap: a = " << a << ", b = " << b << endl;
+
+    return 0;
+}
+#include <iostream>
+using namespace std;
+
+template <class T>
+T findMax(T a, T b) {
+    return (a > b) ? a : b;
+}
+
+int main() {
+    cout << "Max of 10 and 20: " << findMax(10, 20) << endl;
+    cout << "Max of 2.5 and 5.7: " << findMax(2.5, 5.7) << endl;
+    cout << "Max of 'A' and 'Z': " << findMax('A', 'Z') << endl;
+    return 0;
+}
+#include <iostream>
+using namespace std;
+
+template <class T>
+class Calculator {
+    T num1, num2;
+public:
+    Calculator(T n1, T n2) {
+        num1 = n1;
+        num2 = n2;
+    }
+
+    void displayResults() {
+        cout << "Numbers: " << num1 << " and " << num2 << endl;
+        cout << "Addition: " << num1 + num2 << endl;
+        cout << "Subtraction: " << num1 - num2 << endl;
+        cout << "Multiplication: " << num1 * num2 << endl;
+        cout << "Division: " << num1 / num2 << endl;
+    }
+};
+
+int main() {
+    Calculator<int> c1(10, 5);
+    cout << "Integer Calculator:\n";
+    c1.displayResults();
+
+    Calculator<float> c2(5.5, 2.2);
+    cout << "\nFloat Calculator:\n";
+    c2.displayResults();
+
+    return 0;
+}
+#include <iostream>
+using namespace std;
+
+template <class T>
+class Array {
+    T arr[5];
+public:
+    void input() {
+        cout << "Enter 5 elements:\n";
+        for (int i = 0; i < 5; i++)
+            cin >> arr[i];
+    }
+
+    void display() {
+        cout << "Array Elements: ";
+        for (int i = 0; i < 5; i++)
+            cout << arr[i] << " ";
+        cout << endl;
+    }
+
+    T findMax() {
+        T max = arr[0];
+        for (int i = 1; i < 5; i++)
+            if (arr[i] > max)
+                max = arr[i];
+        return max;
+    }
+};
+
+int main() {
+    Array<int> a1;
+    a1.input();
+    a1.display();
+    cout << "Maximum: " << a1.findMax() << endl;
+
+    return 0;
+}
