@@ -1,0 +1,111 @@
+#include <iostream>
+using namespace std;
+
+class Complex {
+    int real, imag;
+
+public:
+    void input() {
+        cout << "Enter real and imaginary parts: ";
+        cin >> real >> imag;
+    }
+
+    friend Complex add(Complex, Complex);
+    void display() {
+        cout << real << " + " << imag << "i" << endl;
+    }
+};
+
+Complex add(Complex c1, Complex c2) {
+    Complex temp;
+    temp.real = c1.real + c2.real;
+    temp.imag = c1.imag + c2.imag;
+    return temp;
+}
+
+int main() {
+    Complex c1, c2, c3;
+    cout << "Enter first complex number:\n";
+    c1.input();
+    cout << "Enter second complex number:\n";
+    c2.input();
+    c3 = add(c1, c2);
+    cout << "Sum: ";
+    c3.display();
+    return 0;
+}
+
+#include <iostream>
+using namespace std;
+
+class A;
+class B;
+
+class A {
+    int x;
+public:
+    void setData() {
+        cout << "Enter value of x: ";
+        cin >> x;
+    }
+    friend void sum(A, B);
+};
+
+class B {
+    int y;
+public:
+    void setData() {
+        cout << "Enter value of y: ";
+        cin >> y;
+    }
+    friend void sum(A, B);
+};
+
+void sum(A a, B b) {
+    cout << "Sum = " << a.x + b.y << endl;
+}
+
+int main() {
+    A a;
+    B b;
+    a.setData();
+    b.setData();
+    sum(a, b);
+    return 0;
+}
+#include <iostream>
+using namespace std;
+
+class Student {
+    string name;
+    int marks;
+
+public:
+    void input() {
+        cout << "Enter Name and Marks: ";
+        cin >> name >> marks;
+    }
+
+    friend class Result;
+};
+
+class Result {
+public:
+    void display(Student s) {
+        cout << "Name: " << s.name << ", Marks: " << s.marks << endl;
+        if (s.marks >= 50)
+            cout << "Status: Pass\n";
+        else
+            cout << "Status: Fail\n";
+    }
+};
+
+int main() {
+    Student s;
+    s.input();
+
+    Result r;
+    r.display(s);
+    return 0;
+}
+
