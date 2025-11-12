@@ -1,0 +1,214 @@
+#include <iostream>
+using namespace std;
+
+class Person {
+public:
+    string name;
+    int age;
+
+    void getPerson() {
+        cout << "Enter Name and Age: ";
+        cin >> name >> age;
+    }
+};
+
+class Student : public Person {
+public:
+    int roll;
+    void getStudent() {
+        cout << "Enter Roll No: ";
+        cin >> roll;
+    }
+
+    void display() {
+        cout << "\nName: " << name << ", Age: " << age << ", Roll No: " << roll << endl;
+    }
+};
+
+int main() {
+    Student s;
+    s.getPerson();
+    s.getStudent();
+    s.display();
+    return 0;
+}
+
+#include <iostream>
+using namespace std;
+
+class Student {
+protected:
+    int roll;
+public:
+    void getRoll() {
+        cout << "Enter Roll No: ";
+        cin >> roll;
+    }
+};
+
+class Marks {
+protected:
+    int marks;
+public:
+    void getMarks() {
+        cout << "Enter Marks: ";
+        cin >> marks;
+    }
+};
+
+class Result : public Student, public Marks {
+public:
+    void display() {
+        cout << "\nRoll No: " << roll << ", Marks: " << marks << endl;
+    }
+};
+
+int main() {
+    Result r;
+    r.getRoll();
+    r.getMarks();
+    r.display();
+    return 0;
+}   
+
+#include <iostream>
+using namespace std;
+
+class Student {
+public:
+    int roll;
+    void getRoll() {
+        cout << "Enter Roll No: ";
+        cin >> roll;
+    }
+};
+
+class Marks : public Student {
+public:
+    int marks;
+    void getMarks() {
+        cout << "Enter Marks: ";
+        cin >> marks;
+    }
+};
+
+class Result : public Marks {
+public:
+    void display() {
+        cout << "\nRoll: " << roll << ", Marks: " << marks << endl;
+    }
+};
+
+int main() {
+    Result r;
+    r.getRoll();
+    r.getMarks();
+    r.display();
+    return 0;
+}]
+
+
+#include <iostream>
+using namespace std;
+
+class Person {
+public:
+    string name;
+    void getName() {
+        cout << "Enter Name: ";
+        cin >> name;
+    }
+};
+
+class Student : public Person {
+public:
+    int roll;
+    void getRoll() {
+        cout << "Enter Roll No: ";
+        cin >> roll;
+    }
+
+    void show() {
+        cout << "\nStudent Name: " << name << ", Roll: " << roll << endl;
+    }
+};
+
+class Teacher : public Person {
+public:
+    string subject;
+    void getSubject() {
+        cout << "Enter Subject: ";
+        cin >> subject;
+    }
+
+    void show() {
+        cout << "\nTeacher Name: " << name << ", Subject: " << subject << endl;
+    }
+};
+
+int main() {
+    Student s;
+    Teacher t;
+
+    s.getName();
+    s.getRoll();
+    t.getName();
+    t.getSubject();
+
+    s.show();
+    t.show();
+
+    return 0;
+}
+
+#include <iostream>
+using namespace std;
+
+class Student {
+protected:
+    int roll;
+public:
+    void getRoll() {
+        cout << "Enter Roll No: ";
+        cin >> roll;
+    }
+};
+
+class Marks : virtual public Student {
+protected:
+    int marks1, marks2;
+public:
+    void getMarks() {
+        cout << "Enter Marks in 2 subjects: ";
+        cin >> marks1 >> marks2;
+    }
+};
+
+class Sports : virtual public Student {
+protected:
+    int score;
+public:
+    void getScore() {
+        cout << "Enter Sports Score: ";
+        cin >> score;
+    }
+};
+
+class Result : public Marks, public Sports {
+public:
+    void display() {
+        cout << "\nRoll: " << roll
+             << ", Total Marks: " << (marks1 + marks2)
+             << ", Sports Score: " << score
+             << ", Grand Total: " << (marks1 + marks2 + score) << endl;
+    }
+};
+
+int main() {
+    Result r;
+    r.getRoll();
+    r.getMarks();
+    r.getScore();
+    r.display();
+    return 0;
+}
